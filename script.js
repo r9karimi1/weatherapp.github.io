@@ -6,6 +6,8 @@ const wrapper = document.querySelector(".wrapper"),
   weatherPart = wrapper.querySelector(".weather-part"),
   wIcon = weatherPart.querySelector("img"),
   arrowBack = wrapper.querySelector("header i");
+require("dotenv").config();
+console.log(process.env);
 
 let api;
 
@@ -24,7 +26,8 @@ locationBtn.addEventListener("click", () => {
 });
 
 function requestApi(city) {
-  api = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=c0f70bacda303ec9c5f54dabb96f24c6`;
+  const api_key = process.env.API_KEY;
+  api = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${api_key}`;
   fetchData();
 }
 
